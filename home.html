@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminous Academy - Language & Quranic Studies</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --islamic-green: #228B22;
+            --gold: #FFD700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 60%, var(--islamic-green));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background-color: var(--islamic-green);
+            margin-left: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1e7a1e;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 25%;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .course-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .course-card:hover .course-img img {
+            transform: scale(1.1);
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .course-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .course-content ul {
+            margin-left: 1rem;
+            color: #666;
+        }
+        
+        .course-content ul li {
+            margin-bottom: 0.3rem;
+        }
+        
+        .language {
+            border-top: 4px solid var(--secondary-color);
+        }
+        
+        .quranic {
+            border-top: 4px solid var(--islamic-green);
+        }
+        
+        .tab-container {
+            margin-bottom: 2rem;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .tab-btn:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .testimonials {
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .contact {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .contact .section-title h2 {
+            color: white;
+        }
+        
+        .contact .section-title h2::after {
+            background-color: var(--gold);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 0.5rem auto;
+                width: 80%;
+                max-width: 200px;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                Luminous<span>Academy</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#language">Language Courses</a></li>
+                    <li><a href="#quranic">Quranic Studies</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Master English & Quranic Studies</h1>
+            <p>Join our comprehensive courses at Luminous Academy to excel in English language proficiency and deepen your understanding of the Holy Quran through structured learning programs.</p>
+            <a href="#language" class="btn btn-primary">Explore Language Courses</a>
+            <a href="#quranic" class="btn btn-secondary">Explore Quranic Studies</a>
+        </div>
+    </section>
+
+    <section id="language">
+        <div class="container">
+            <div class="section-title">
+                <h2>English Language Programs</h2>
+            </div>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab(event, 'ielts')">IELTS Preparation</button>
+                    <button class="tab-btn" onclick="openTab(event, 'other')">Other Programs</button>
+                </div>
+                
+                <div id="ielts" class="tab-content active">
+                    <div class="courses-container">
+                        <div class="course-card language">
+                            <div class="course-img">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="IELTS Academic">
+                            </div>
+                            <div class="course-content">
+                                <h3>IELTS Academic Preparation</h3>
+                                <p>Comprehensive course for students preparing for higher education or professional registration.</p>
+                                <ul>
+                                    <li>All four modules: Listening, Reading, Writing, Speaking</li>
+                                    <li>Test-taking strategies</li>
+                                    <li>Practice tests with detailed feedback</li>
+                                    <li>Academic vocabulary building</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card language">
+                            <div class="course-img">
+                                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="IELTS General">
+                            </div>
+                            <div class="course-content">
+                                <h3>IELTS General Training</h3>
+                                <p>For those migrating to English-speaking countries or applying for secondary education.</p>
+                                <ul>
+                                    <li>Practical English language skills</li>
+                                    <li>Everyday writing tasks</li>
+                                    <li>Social and workplace communication</li>
+                                    <li>General reading comprehension</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card language">
+                            <div class="course-img">
+                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="IELTS Speaking">
+                            </div>
+                            <div class="course-content">
+                                <h3>IELTS Speaking Mastery</h3>
+                                <p>Specialized course to excel in the speaking component of IELTS.</p>
+                                <ul>
+                                    <li>Fluency and coherence development</li>
+                                    <li>Pronunciation improvement</li>
+                                    <li>Lexical resource enhancement</li>
+                                    <li>Mock interviews with feedback</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="other" class="tab-content">
+                    <div class="courses-container">
+                        <div class="course-card language">
+                            <div class="course-content">
+                                <h3>TOEFL iBT Preparation</h3>
+                                <p>Comprehensive training for the internet-based TOEFL test.</p>
+                                <ul>
+                                    <li>Reading, Listening, Speaking, Writing sections</li>
+                                    <li>Integrated tasks practice</li>
+                                    <li>Academic English skills</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card language">
+                            <div class="course-content">
+                                <h3>PTE Academic Preparation</h3>
+                                <p>Computer-based English test accepted for study abroad and immigration.</p>
+                                <ul>
+                                    <li>Speaking and writing strategies</li>
+                                    <li>Reading techniques</li>
+                                    <li>Listening comprehension</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card language">
+                            <div class="course-content">
+                                <h3>OET Preparation</h3>
+                                <p>Occupational English Test for healthcare professionals.</p>
+                                <ul>
+                                    <li>Medical communication skills</li>
+                                    <li>Role-specific preparation</li>
+                                    <li>Case note writing</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card language">
+                            <div class="course-content">
+                                <h3>General English Courses</h3>
+                                <p>From beginner to advanced levels.</p>
+                                <ul>
+                                    <li>Grammar essentials</li>
+                                    <li>Vocabulary building</li>
+                                    <li>Conversation practice</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card language">
+                            <div class="course-content">
+                                <h3>Spoken English Courses</h3>
+                                <p>Focus on fluency and pronunciation.</p>
+                                <ul>
+                                    <li>Conversation skills</li>
+                                    <li>Accent reduction</li>
+                                    <li>Public speaking</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card language">
+                            <div class="course-content">
+                                <h3>Business English</h3>
+                                <p>English for professional settings.</p>
+                                <ul>
+                                    <li>Meeting participation</li>
+                                    <li>Presentation skills</li>
+                                    <li>Business writing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quranic" class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quranic Studies Programs</h2>
+            </div>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab(event, 'core')">Core Studies</button>
+                    <button class="tab-btn" onclick="openTab(event, 'advanced')">Advanced Studies</button>
+                </div>
+                
+                <div id="core" class="tab-content active">
+                    <div class="courses-container">
+                        <div class="course-card quranic">
+                            <div class="course-img">
+                                <img src="https://images.unsplash.com/photo-1563460706-dfcfd8b8f844?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quran Reading">
+                            </div>
+                            <div class="course-content">
+                                <h3>Quran Reading with Tajweed</h3>
+                                <p>Learn to recite the Quran with proper pronunciation and rules.</p>
+                                <ul>
+                                    <li><strong>Beginner Level:</strong> Arabic alphabet, basic pronunciation</li>
+                                    <li><strong>Intermediate Level:</strong> Applying basic Tajweed rules</li>
+                                    <li><strong>Advanced Level:</strong> Mastering complex Tajweed rules</li>
+                                    <li>Qira'at (Different Styles of Recitation)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card quranic">
+                            <div class="course-img">
+                                <img src="" alt="Quran Translation">
+                            </div>
+                            <div class="course-content">
+                                <h3>Quran Translation</h3>
+                                <p>Understand the meaning of the Quran in your language.</p>
+                                <ul>
+                                    <li>Word-by-Word Translation</li>
+                                    <li>Sentence-by-Sentence Translation</li>
+                                    <li>Thematic Translation by topics</li>
+                                    <li>Contextual understanding</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card quranic">
+                            <div class="course-img">
+                                <img src="" alt="Quran Tafsir">
+                            </div>
+                            <div class="course-content">
+                                <h3>Quranic Tafsir (Exegesis)</h3>
+                                <p>In-depth study of Quranic interpretation.</p>
+                                <ul>
+                                    <li>Principles of Quranic interpretation</li>
+                                    <li>Tafsir of specific Surahs</li>
+                                    <li>Comparative Tafsir of scholars</li>
+                                    <li>Historical context analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card quranic">
+                            <div class="course-img">
+                                <img src="https://images.unsplash.com/photo-1571974096035-bc3568627606?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quran Memorization">
+                            </div>
+                            <div class="course-content">
+                                <h3>Quran Memorization (Hifz)</h3>
+                                <p>Systematic approach to memorizing the Quran.</p>
+                                <ul>
+                                    <li><strong>Beginner Hifz:</strong> Shorter Surahs</li>
+                                    <li><strong>Intermediate Hifz:</strong> Longer Surahs</li>
+                                    <li><strong>Advanced Hifz:</strong> Perfecting memorization</li>
+                                    <li>Revision strategies</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card quranic">
+                            <div class="course-img">
+                                <img src="https://images.unsplash.com/photo-1541271696565-bdb8e92c9b0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quranic Arabic">
+                            </div>
+                            <div class="course-content">
+                                <h3>Quranic Arabic</h3>
+                                <p>Understand the language of the Quran.</p>
+                                <ul>
+                                    <li>Basic Quranic Arabic Grammar</li>
+                                    <li>Quranic Vocabulary building</li>
+                                    <li>Understanding Quranic Morphology</li>
+                                    <li>Sentence structure analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="advanced" class="tab-content">
+                    <div class="courses-container">
+                        <div class="course-card quranic">
+                            <div class="course-content">
+                                <h3>Quranic Sciences ('Ulum al-Qur'an)</h3>
+                                <p>Advanced study of Quranic disciplines.</p>
+                                <ul>
+                                    <li>Revelation of the Quran (Nuzul al-Quran)</li>
+                                    <li>Compilation history</li>
+                                    <li>Miraculous nature (I'jaz)</li>
+                                    <li>Abrogation (Nasikh wa Mansukh)</li>
+                                    <li>Occasions of revelation (Asbab al-Nuzul)</li>
+                                    <li>Quranic narratives</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card quranic">
+                            <div class="course-content">
+                                <h3>Advanced Tafsir Methodology</h3>
+                                <p>Critical analysis of interpretation approaches.</p>
+                                <ul>
+                                    <li>Tafsir bil-Ma'thur</li>
+                                    <li>Tafsir bil-Ra'y</li>
+                                    <li>Modern approaches to Tafsir</li>
+                                    <li>Scientific interpretation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card quranic">
+                            <div class="course-content">
+                                <h3>Quranic Rhetoric (Balagha)</h3>
+                                <p>Study of the Quran's eloquence.</p>
+                                <ul>
+                                    <li>Metaphors and similes</li>
+                                    <li>Literary devices</li>
+                                    <li>Structural patterns</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card quranic">
+                            <div class="course-content">
+                                <h3>Quranic Ethics & Morality</h3>
+                                <p>Extracting ethical principles.</p>
+                                <ul>
+                                    <li>Personal conduct</li>
+                                    <li>Social relations</li>
+                                    <li>Spiritual development</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Students Say</h2>
+            </div>
+            
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p class="testimonial-text">"The IELTS preparation course at Luminous Academy helped me achieve an overall band score of 8.0! The instructors were knowledgeable and provided personalized feedback that made all the difference."</p>
+                    <p class="testimonial-author">- Ahmed Khan, IELTS Student</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"I never thought I could recite the Quran properly until I joined the Tajweed course at Luminous Academy. The step-by-step approach and patient teachers made learning enjoyable and effective."</p>
+                    <p class="testimonial-author">- Fatima Abdullah, Tajweed Student</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"The Business English course transformed my professional communication skills. I now feel confident participating in meetings and writing reports in English."</p>
+                    <p class="testimonial-author">- Yusuf Mahmood, Business Professional</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Luminous Academy's Hifz program has a wonderful methodology that makes memorization manageable. The revision system ensures I retain what I've learned long-term."</p>
+                    <p class="testimonial-author">- Aisha Rahman, Hifz Student</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course">Course Interest</label>
+                        <select id="course" name="course">
+                            <option value="">Select a course</option>
+                            <optgroup label="Language Courses">
+                                <option value="ielts-academic">IELTS Academic</option>
+                                <option value="ielts-general">IELTS General</option>
+                                <option value="toefl">TOEFL iBT</option>
+                                <option value="pte">PTE Academic</option>
+                                <option value="oet">OET</option>
+                                <option value="general-english">General English</option>
+                                <option value="spoken-english">Spoken English</option>
+                                <option value="business-english">Business English</option>
+                            </optgroup>
+                            <optgroup label="Quranic Studies">
+                                <option value="tajweed">Quran Reading with Tajweed</option>
+                                <option value="translation">Quran Translation</option>
+                                <option value="tafsir">Quranic Tafsir</option>
+                                <option value="hifz">Quran Memorization (Hifz)</option>
+                                <option value="quranic-arabic">Quranic Arabic</option>
+                                <option value="ulum-al-quran">Quranic Sciences</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Luminous Academy</h3>
+                    <p>Providing quality education in English language and Quranic studies since 2010.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Language Courses</h3>
+                    <ul>
+                        <li><a href="#">IELTS Preparation</a></li>
+                        <li><a href="#">TOEFL iBT</a></li>
+                        <li><a href="#">PTE Academic</a></li>
+                        <li><a href="#">OET</a></li>
+                        <li><a href="#">General English</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quranic Studies</h3>
+                    <ul>
+                        <li><a href="#">Tajweed</a></li>
+                        <li><a href="#">Quran Translation</a></li>
+                        <li><a href="#">Tafsir</a></li>
+                        <li><a href="#">Hifz Program</a></li>
+                        <li><a href="#">Quranic Arabic</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>123 Education Street</li>
+                        <li>Knowledge City</li>
+                        <li>Phone: +123 456 7890</li>
+                        <li>Email: info@luminousacademy.edu</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Luminous Academy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Get all elements with class="tab-content" and hide them
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Get all elements with class="tab-btn" and remove the class "active"
+            const tabButtons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
